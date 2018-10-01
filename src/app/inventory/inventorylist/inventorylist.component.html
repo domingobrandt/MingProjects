@@ -1,0 +1,24 @@
+<p>
+  inventorylist works!
+</p>
+
+<table class="table table-hover">
+  <thead class="thead-default">
+     <tr>
+        <th>Id</th>
+        <th>Producto</th>
+        <th>Existencia</th>
+        <th>Precio</th>
+        <th>Proveedor</th>
+     </tr>
+  </thead>
+  <tbody>
+     <tr *ngFor="let item of list">
+         <td>{{ item.id_pro }}</td>
+         <td>{{ item.producto }}</td>
+         <td>{{ item.stock }}</td>
+         <td>{{ item.precio }}</td>
+         <td>{{ item.id_prov }}</td>
+     </tr>
+  </tbody>
+</table>
