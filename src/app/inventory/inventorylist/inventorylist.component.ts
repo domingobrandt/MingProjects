@@ -18,7 +18,7 @@ export class InventorylistComponent implements OnInit {
     private service: InventoryService) { }
 
   ngOnInit() {
-    this.service.getInventory()
+    this.service.getInventories()
     .subscribe(
         rs => this.list = rs,
         er => console.log(er),

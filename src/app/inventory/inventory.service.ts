@@ -16,13 +16,44 @@ private headers = new Headers({'Content-Type': 'application/json'});
 private url = 'http://localhost:8000/inventario';
   constructor(private http : Http) { }
 
-  getInventory(): Observable<Inventory[]>{
+  getInventories(): Observable<Inventory[]>{
     let url = `${this.url}`;
     return this.http.get(url)
                     .map(r => r.json())
                     .catch(this.handleError);
   }
 
+  
+  getInventory(id: number): Observable<Inventory[]> {
+    let url = `${this.url}/${id}`;
+    return this.http.get(url, {headers: this.headers})
+                    .first()
+                    .map(res => res.json())
+                    .catch(this.handleError);;
+  }
+
+  addInventory (inventory: Inventory) {
+    let url = `${this.url}`;
+    let iJson = JSON.stringify(inventory);
+    return this.http.post(url, iJson, {headers: this.headers})
+                    .map(response => response.json())
+                    .catch(this.handleError);;
+  }
+
+  putInventory (inventory: Inventory) {
+    let url = `${this.url}`;
+    let iJson = JSON.stringify(inventory);
+    return this.http.put(url, iJson, {headers: this.headers})
+                    .map(response => response.json())
+                    .catch(this.handleError);;
+  }
+
+  delInventory (id: number) {
+    let url = `${this.url}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+                    .map(res => res.json())
+                    .catch(this.handleError);;
+  }
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
