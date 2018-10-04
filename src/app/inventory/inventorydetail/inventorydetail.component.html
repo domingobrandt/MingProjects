@@ -1,74 +1,73 @@
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      {{ titulo }}
-    </div>
-    <div class="card-block">
-      <form novalidate [formGroup]="form">
-
-        <div class="form-group">
-          <label for="id_pro">Id</label>
-          <input type="number" class="form-control" id="id_pro" formControlName="id_pro">
-          <div *ngIf="form.controls.id_pro.errors && form.controls.id_pro.touched">
-             <div *ngIf="form.controls.id_pro.errors.required" class="alert alert-danger">
-                El campo es requerido
-             </div>
-             <div *ngIf="form.controls.id_pro.errors.valorUnico" class="alert alert-danger">
-                El id ya está registrado
-             </div>
-        </div>
+    <div class="card">
+      <div class="card-header">
+        {{ titulo }}
       </div>
-
-        <div class="form-group">
-          <label for="producto">Producto</label>
-          <input type="text" class="form-control" id="producto" formControlName="producto">
-          <div *ngIf="form.controls.producto.errors && form.controls.producto.touched">
-             <div *ngIf="form.controls.producto.errors.required" class="alert alert-danger">
-                El producto es requerido
-             </div>
-             <div *ngIf="form.controls.producto.errors.maxlength" class="alert alert-danger">
-                El nombre del producto sólo puede tener hasta 10 caracteres
+      <div class="card-body">
+        <form novalidate [formGroup]="form">
+  
+          <div class="form-group">
+            <label for="id_pro">Id de producto</label>
+            <input type="number" class="form-control" id="id_pro" formControlName="id_pro" required>
+            <div *ngIf="form.controls.id_pro.errors && form.controls.id_pro.touched">
+               <div *ngIf="form.controls.id_pro.errors.required" class="alert alert-danger">
+                  El campo es requerido
+               </div>
+               <div *ngIf="form.controls.id_pro.errors.valorUnico" class="alert alert-danger">
+                  El id ya está registrado
+               </div>
+          </div>
+        </div>
+  
+          <div class="form-group">
+            <label for="producto">Producto</label>
+            <input type="text" class="form-control" id="producto" formControlName="producto">
+            <div *ngIf="form.controls.producto.errors && form.controls.producto.touched">
+               <div *ngIf="form.controls.producto.errors.required" class="alert alert-danger">
+                  El producto es requerido
+               </div>
+               <div *ngIf="form.controls.producto.errors.maxlength" class="alert alert-danger">
+                  El nombre del producto sólo puede tener hasta 10 caracteres
+               </div>
+            </div>
+         </div>
+         
+         <div class="form-group">
+          <label for="stock">Existencia</label>
+          <input type="number" class="form-control" id="stock" formControlName="stock">
+          <div *ngIf="form.controls.stock.errors && form.controls.stock.touched">
+            <!--error validar error touched para saber si ah sido visitado por el usuario-->
+             <div *ngIf="form.controls.stock.errors.required" class="alert alert-danger">
+                El existencia es requerido
              </div>
           </div>
        </div>
-       
+
        <div class="form-group">
-        <label for="stock">Existencia</label>
-        <input type="number" class="form-control" id="stock" formControlName="stock">
-        <div *ngIf="form.controls.stock.errors && form.controls.stock.touched">
-           <div *ngIf="form.controls.stock.errors.required" class="alert alert-danger">
-              El existencia es requerido
+        <label for="precio">Precio</label>
+        <input type="number" class="form-control" id="precio" formControlName="precio">
+        <div *ngIf="form.controls.precio.errors && form.controls.precio.touched">
+           <div *ngIf="form.controls.precio.errors.required" class="alert alert-danger">
+              El precio es requerido
            </div>
         </div>
      </div>
 
-                 
-     <div class="form-group">
-      <label for="precio">Precio</label>
-      <input type="number" class="form-control" id="precio" formControlName="precio">
-      <div *ngIf="form.controls.precio.errors && form.controls.precio.touched">
-         <div *ngIf="form.controls.precio.errors.required" class="alert alert-danger">
-            El precio es requerido
-         </div>
+              <div class="form-group">
+                 <label for="id_prov">Proveedor</label>
+                 <input type="text" class="form-control" id="id_prov" formControlName="id_prov">
+                 <div *ngIf="form.controls.id_prov.errors && form.controls.id_prov.touched">
+                    <div *ngIf="form.controls.id_prov.errors.required" class="alert alert-danger">
+                       El proveedor es requerido
+                    </div>
+                 </div>
+              </div>
+
+              <button class="btn btn-primary" (click)="guardarInventario()" [disabled]="!form.valid">
+                 Guardar</button>
+              <button class="btn btn-default" (click)="limpiarFormulario()">Limpiar</button>
+              
+        </form>
       </div>
-   </div>
-
-            <div class="form-group">
-               <label for="id_prov">Proveedor</label>
-               <input type="text" class="form-control" id="id_prov" formControlName="id_prov">
-               <div *ngIf="form.controls.id_prov.errors && form.controls.id_prov.touched">
-                  <div *ngIf="form.controls.id_prov.errors.required" class="alert alert-danger">
-                     El proveedor es requerido
-                  </div>
-               </div>
-            </div>
-
-
-            <button class="btn btn-primary" (click)="guardarInventario()" [disabled]="!form.valid">
-               Guardar</button>
-            <button class="btn btn-default" (click)="limpiarFormulario()">Limpiar</button>
-            
-      </form>
     </div>
   </div>
-</div>

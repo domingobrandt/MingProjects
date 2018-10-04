@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-
 import { InventoryComponent }  from './inventory.component';
 import { InventorylistComponent }    from './inventorylist/inventorylist.component';
 import { InventorydetailComponent }  from './inventorydetail/inventorydetail.component';
 import { InventoryService } from './inventory.service';
 import { InventaryRoutingModule } from './inventory-routing.module';
+
 @NgModule({
   declarations: [
     InventoryComponent,InventorydetailComponent,
@@ -18,7 +18,7 @@ import { InventaryRoutingModule } from './inventory-routing.module';
   imports: [
     CommonModule,
     InventaryRoutingModule,
-    HttpModule,
+    HttpModule,ReactiveFormsModule
     ],
  
   providers: [InventoryService],

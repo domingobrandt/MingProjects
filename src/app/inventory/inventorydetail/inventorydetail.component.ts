@@ -11,29 +11,32 @@ import { FormGroup, FormBuilder, Validators }   from '@angular/forms';
 })
 export class InventorydetailComponent implements OnInit {
 
-  titulo = " Agregar un nuevo registro";
+  titulo = "";
   form: FormGroup;
-  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: InventoryService,
     private fb: FormBuilder
-    ) { this.crearControles }
+    ) { this.crearControles() }
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
     if (!id) return
     console.log(id);
   }
-  
+
   crearControles(){
     this.form = this.fb.group({
-       id_pro:'',
-       producto:'',
-       stock:'',
-       precio:'',
-       id_prov:''
+       id_pro:['', Validators.required],
+       producto:['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(18)
+     ])],
+       stock:['', Validators.required],
+       precio:['', Validators.required],
+       id_prov:['', Validators.required]
     })
   }
   guardarInventario(){
