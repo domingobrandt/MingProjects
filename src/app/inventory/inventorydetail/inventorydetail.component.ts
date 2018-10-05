@@ -47,5 +47,14 @@ export class InventorydetailComponent implements OnInit {
                   () => console.log('terminado')
                 );
   }
+  limpiarFormulario() {
+    this.form.patchValue({
+      id_pro:'',
+      producto:'',
+      stock:'',
+      precio:'', 
+      id_prov:''
+    }) 
+  }
 
 }
