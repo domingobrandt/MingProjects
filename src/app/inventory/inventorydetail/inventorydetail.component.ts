@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params }       from '@angular/router'; 
 import { InventoryService } from '../inventory.service';
 import { FormGroup, FormBuilder, Validators }   from '@angular/forms';
-
+import { InventarioValidator } from "../inventory.validators";
 @Component({
   selector: 'app-inventorydetail',
   templateUrl: './inventorydetail.component.html',
@@ -29,7 +29,7 @@ export class InventorydetailComponent implements OnInit {
 
   crearControles(){
     this.form = this.fb.group({
-       id_pro:['', Validators.required],
+       id_pro:['', Validators.required,InventarioValidator.valorUnico(this.service)],
        producto:['', Validators.compose([
         Validators.required,
         Validators.maxLength(18)
