@@ -11,7 +11,7 @@ import { InventarioValidator } from "../inventory.validators";
 })
 export class InventorydetailComponent implements OnInit {
 
-  titulo = "";
+  titulo = "Formulario";
   form: FormGroup;
 
   constructor(
@@ -48,13 +48,7 @@ export class InventorydetailComponent implements OnInit {
                 );
   }
   limpiarFormulario() {
-    this.form.patchValue({
-      id_pro:'',
-      producto:'',
-      stock:'',
-      precio:'', 
-      id_prov:''
-    }) 
+    this.form.reset();
   }
 
 }
