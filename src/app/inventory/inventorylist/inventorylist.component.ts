@@ -26,7 +26,7 @@ export class InventorylistComponent implements OnInit {
         () => console.log(this.list)
     )
   }
-  Selecionar(item:Inventory){
+  Editar(item:Inventory){
     let link = ["inventory/detail", item.id_pro];
     this.router.navigate(link);
   }
