@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-inventorylist',
   templateUrl: './inventorylist.component.html',
-  styleUrls: ['./inventorylist.component.scss']
+  styleUrls: ['./inventorylist.component.scss'],
+  //viewProvider: [InventoryService]
 })
 
 export class InventorylistComponent implements OnInit {
@@ -25,7 +26,10 @@ export class InventorylistComponent implements OnInit {
         () => console.log(this.list)
     )
   }
- 
+  Selecionar(item:Inventory){
+    let link = ["inventory/detail", item.id_pro];
+    this.router.navigate(link);
+  }
 
 
   
