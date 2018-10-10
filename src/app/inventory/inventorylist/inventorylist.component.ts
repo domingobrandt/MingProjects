@@ -31,6 +31,18 @@ export class InventorylistComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  Borrar(item:Inventory){
+    if(!item) return;
+    this.service.delInventory(item.id_pro)
+      .subscribe(
+        rs => console.log(rs),
+        er => console.log(er),
+        () => {
+          this.list = this.list.filter(h => h !== item)
+      }
+      )
+  }
+
 
   
 }
