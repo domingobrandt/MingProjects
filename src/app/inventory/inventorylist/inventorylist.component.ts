@@ -1,19 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Inventory } from "../inventory";
 import { InventoryService } from "../inventory.service";
 import { Router } from '@angular/router';
+import { slide } from '../animations';
 
 
 @Component({
   selector: 'app-inventorylist',
   templateUrl: './inventorylist.component.html',
   styleUrls: ['./inventorylist.component.scss'],
+  animations: [slide]
   //viewProvider: [InventoryService]
+  
 })
 
 export class InventorylistComponent implements OnInit {
 
   list: Inventory[];
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
+
 
   constructor( private router: Router,
     private service: InventoryService) { }

@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params }       from '@angular/router'; 
 import { InventoryService } from '../inventory.service';
 import { FormGroup, FormBuilder, Validators }   from '@angular/forms';
 import { InventarioValidator } from "../inventory.validators";
 import { Inventory } from '../inventory';
+import { slide } from '../animations';
+
 @Component({
   selector: 'app-inventorydetail',
   templateUrl: './inventorydetail.component.html',
   styleUrls: ['./inventorydetail.component.scss'],
-  providers: [InventoryService]
+  providers: [InventoryService],
+  animations: [slide]
+
 })
 export class InventorydetailComponent implements OnInit {
 
   titulo = "";
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
   form: FormGroup;
   inventory:Inventory[];
   esEdicion = false;
