@@ -1,3 +1,11 @@
-<button  type="button" class="btn btn-primary" routerLink="list" routerLinkActive="active">List Click me!</button>
-<button  type="button" class="btn btn-primary" routerLink="detail" routerLinkActive="active">Detail Click me!</button>
+<button  type="button" class="btn btn-primary" routerLink="list" routerLinkActive="active"
+[@animacion]="estado1"
+(mouseenter)="estado1='active'" 
+(mouseleave)="estado1='inactive'"
+>List Click me!</button>
+<button  type="button" class="btn btn-primary" routerLink="detail" routerLinkActive="active"
+[@animacion]="estado2"
+(mouseenter)="estado2='active'" 
+(mouseleave)="estado2='inactive'"
+>Detail Click me!</button>
 <router-outlet></router-outlet>
